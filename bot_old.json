@@ -1,0 +1,115 @@
+{
+  "domain": "pay.me.com",
+  "default_menu": "menu",
+  "system_messages": {
+    "pay_message": "Варианты покупки",
+    "not_admin": "Вы не администратор. Сюды нельзя",
+    "no_sub": "У вас нет подписки. Хотите купить?",
+    "in_chat": "Вы вошли в чат. Все сообщения в нем будут отправляться сюда до тех пор, пока вы не уйдете от сюда(или не будете удалены)",
+    "not_sub_chat": "Вам нельзя войти в чат, потому что вы не купили подписку. Хотите купить?",
+    "json_bot_not_valid": "Ошибка. Файл оформлен неправильно. Смотрите json документацию и проверьте файл через серелизаторы",
+    "json_bot_valid": "Файл был сохранен. Настройки бота обновлены"
+  },
+  "menu":{
+    "message": "Выбери пункт меню",
+    "keyboard":[
+      {
+        "text": "Оплатить",
+        "action": "pay"
+      },
+      {
+        "text": "Статус подписки",
+        "action": "status"
+      },
+      {
+        "text": "Зайти в чат",
+        "action": "enter_chat"
+      },
+      {
+        "text": "Админка",
+        "action": "admin",
+        "admin_only": true
+      }
+    ]
+  },
+  "chat":{
+    "message": "Вы в чате!",
+    "keyboard":[
+      {
+        "text": "Выйти из чата",
+        "action": "leave_chat"
+      },
+      {
+        "text": "Оплатить",
+        "action": "pay"
+      }
+    ]
+  },
+  "send_msg_chat": {
+    "message": "Введите сообщение в чат:",
+    "keyboard": [
+      {
+        "text": "Назад в админку",
+        "action": "admin"
+      }
+    ]
+  },
+  "send_msg_all": {
+    "message": "Введите сообщение для всех пользователей:",
+    "keyboard": [
+      {
+        "text": "Назад в админку",
+        "action": "admin"
+      }
+    ]
+  },
+  "edit_prefs": {
+    "message": "Отредактируйте этот файл и ответьте сообщением с отредактированым документом:",
+    "keyboard": [
+      {
+        "text": "Назад в админку",
+        "action": "admin"
+      }
+    ]
+  },
+  "admin_panel": {
+    "message": "Выберите пункт админки",
+    "keyboard":[
+      {
+        "text": "Отправить сообщение в чат",
+        "action": "send_msg_chat",
+        "admin_only": true
+      },
+      {
+        "text": "Отправить сообщение всем пользователям",
+        "action": "send_msg_all",
+        "admin_only": true
+      },
+      {
+        "text": "Дать подписку пользователю",
+        "action": "give_sub",
+        "admin_only": true
+      },
+      {
+        "text": "Выгнать пользователя",
+        "action": "kick_user",
+        "admin_only": true
+      },
+      {
+        "text": "Отредактировать файл фраз бота",
+        "action": "edit_prefs",
+        "admin_only": true
+      },
+      {
+        "text": "Отредактировать цену на подписку",
+        "action": "edit_price",
+        "admin_only": true
+      },
+      {
+        "text": "Назад в меню",
+        "action": "menu"
+      }
+    ]
+
+  }
+}

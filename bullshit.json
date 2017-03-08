@@ -1,0 +1,41 @@
+{
+  'message': {
+    'from': {
+      'type': '',
+      'last_name': 'Nikishin',
+      'id': 3527572,
+      'first_name': 'Rostislav',
+      'username': 'Bronydell'
+    },
+    'migrate_from_chat_id': 0,
+    'photo': [],
+    'migrate_to_chat_id': 0,
+    'new_chat_photo': [],
+    'entities': [],
+    'supergroup_chat_created': False,
+    'document': {
+      'file_id': 'BQADAgADSgADlNM1AAFTxYA0o5pvXAI',
+      'file_size': 2616,
+      'file_name': 'TgBot.java',
+      'mime_type': 'text/x-java'
+    },
+    'caption': '',
+    'date': 1482937293,
+    'new_chat_title': '',
+    'group_chat_created': False,
+    'delete_chat_photo': False,
+    'message_id': 1214,
+    'channel_chat_created': False,
+    'text': '',
+    'chat': {
+      'type': 'private',
+      'id': 3527572,
+      'all_members_are_admins': False,
+      'username': 'Bronydell',
+      'title': '',
+      'first_name': 'Rostislav',
+      'last_name': 'Nikishin'
+    }
+  },
+  'update_id': 971102366
+}

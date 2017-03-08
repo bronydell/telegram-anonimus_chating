@@ -1,0 +1,260 @@
+{
+  "domain": "pay.me.com",
+  "default_menu": "menu",
+  "message_every_min": 0,
+  "duble_msgs": true,
+  "templates": {
+    "text_message": "{}: {}",
+    "photo_message": "{} отправил фото",
+    "audio_message": "{} отправил аудио",
+    "video_message": "{} отправил видео",
+    "voice_message": "{} отправил голосовое сообщение",
+    "document_message": "{} отправил документ"
+  },
+  "system_messages": {
+    "pay_message": "Варианты покупки",
+    "pick_room": "Выбери комнату",
+    "nick_not_available": "Этот ник занят другим пользователем",
+    "create_room": "Создать комнату",
+    "user_entered": "{} вошел в комнату",
+    "user_left": "{} вышел из комнаты",
+    "enter_password": "Введи пароль",
+    "room_doesnt_exist": "Такой комнаты не существует, либо в ней никого нет",
+    "not_admin": "Вы не администратор. Сюды нельзя",
+    "no_sub": "У вас нет подписки. Хотите купить?",
+    "in_chat": "Вы вошли в чат. Все сообщения в нем будут отправляться сюда до тех пор, пока вы не уйдете от сюда(или не будете удалены)",
+    "not_sub_chat": "Вам нельзя войти в чат, потому что вы не купили подписку. Хотите купить?",
+    "json_bot_not_valid": "Ошибка. Файл оформлен неправильно. Смотрите json документацию и проверьте файл через серелизаторы",
+    "json_bot_valid": "Файл был сохранен. Настройки бота обновлены",
+    "user_not_found": "Пользователь с таким ником не найден",
+    "user_kicked": "Ваша подписка была анулирована администратором",
+    "timeout": "Превышен лимит сообщений за промежуток времени",
+    "chat_is_paid": "Чат стал платным. Купить подписку, что бы сделать его бесплатным",
+    "admin_info": "Если у вас есть какие-нибудь проблемы, то напишите @Bronydell",
+    "3days_left": "До конца вашей подписки осталось меньше 3-х дней!",
+    "2days_left": "До конца вашей подписки осталось меньше 2-х дней!",
+    "1days_left": "До конца вашей подписки осталось меньше 1-го дня!",
+    "out_of_sub": "Ваша подписка истекла"
+  },
+  "menu":{
+    "message": "Выбери пункт меню",
+    "keyboard":[
+      {
+        "text": "Оплатить",
+        "action": "pay",
+        "show_when_free": false
+      },
+      {
+        "text": "Статус подписки",
+        "action": "status",
+        "show_when_free": false
+      },
+      {
+        "text": "Связаться с администратором",
+        "action": "contact_admin"
+      },
+      {
+        "text": "Зайти в чат",
+        "action": "room_browser"
+      },
+      {
+        "text": "Сменить ник",
+        "action": "change_nick"
+      },
+      {
+        "text": "Админка",
+        "action": "admin",
+        "admin_only": true
+      }
+    ]
+  },
+  "change_nick": {
+    "message": "Напишите новый ник",
+    "keyboard": [
+      {
+        "text": "В меню",
+        "action": "menu"
+      }
+    ]
+  },
+  "room_browser": {
+    "message": "Выбери нужную команту",
+    "keyboard": [
+      {
+        "text": "Создать комнату",
+        "action": "create_room"
+      },
+      {
+        "text": "Обратно в меню",
+        "action": "menu"
+      }
+    ]
+  },
+  "enter_password": {
+    "message": "Введи пароль для комнаты",
+    "keyboard": [
+      {
+        "text": "Назад в браузер серверов",
+        "action": "room_browser"
+      }
+    ]
+  },
+  "create_room": {
+    "message": "Введи название комнаты",
+    "keyboard": [
+      {
+        "text": "Назад в браузер",
+        "action": "room_browser"
+      }
+    ]
+  },
+  "create_password": {
+    "message": "Введи пароль от комнаты",
+    "keyboard": [
+      {
+        "text": "Без пароля",
+        "action": "none_pass"
+      },
+      {
+        "text": "Назад в браузер",
+        "action": "room_browser"
+      }
+    ]
+  },
+  "chat":{
+    "message": "Вы в чате!",
+    "keyboard":[
+      {
+        "text": "Выйти из чата",
+        "action": "leave_chat"
+      },
+      {
+        "text": "Оплатить",
+        "action": "pay",
+        "show_when_free": false
+      }
+    ]
+  },
+  "send_msg_chat": {
+    "message": "Введите сообщение в чат:",
+    "keyboard": [
+      {
+        "text": "Назад в админку",
+        "action": "admin"
+      }
+    ]
+  },
+  "send_msg_all": {
+    "message": "Введите сообщение для всех пользователей:",
+    "keyboard": [
+      {
+        "text": "Назад в админку",
+        "action": "admin"
+      }
+    ]
+  },
+  "edit_prefs": {
+    "message": "Отредактируйте этот файл и ответьте сообщением с отредактированым документом:",
+    "keyboard": [
+      {
+        "text": "Назад в админку",
+        "action": "admin"
+      }
+    ]
+  },
+  "give_sub": {
+    "message": "Отправьте ник того, кому нужна подписка:",
+    "keyboard": [
+      {
+        "text": "Назад в админку",
+        "action": "admin"
+      }
+    ]
+  },
+  "kick_user": {
+    "message": "Отправьте ник того, кого вы хотите кикнуть:",
+    "keyboard": [
+      {
+        "text": "Назад в админку",
+        "action": "admin"
+      }
+    ]
+  },
+  "edit_price": {
+    "message": "Выберите тип подписки, которую вы хотите отредактировать:",
+    "keyboard": [
+      {
+        "text": "Назад в админку",
+        "action": "admin"
+      }
+    ]
+  },
+  "add_admin": {
+    "message": "Введи ID пользователя, который получит права администратора:",
+    "keyboard": [
+      {
+        "text": "Назад в админку",
+        "action": "admin"
+      }
+    ]
+  },
+  "del_admin": {
+    "message": "Введи ID пользователя, который утратит права администратора:",
+    "keyboard": [
+      {
+        "text": "Назад в админку",
+        "action": "admin"
+      }
+    ]
+  },
+  "admin_panel": {
+    "message": "Выберите пункт админки",
+    "keyboard":[
+      {
+        "text": "Отправить сообщение в чат",
+        "action": "send_msg_chat",
+        "admin_only": true
+      },
+      {
+        "text": "Отправить сообщение всем пользователям",
+        "action": "send_msg_all",
+        "admin_only": true
+      },
+      {
+        "text": "Дать подписку пользователю",
+        "action": "give_sub",
+        "admin_only": true
+      },
+      {
+        "text": "Выгнать пользователя",
+        "action": "kick_user",
+        "admin_only": true
+      },
+      {
+        "text": "Отредактировать файл фраз бота",
+        "action": "edit_prefs",
+        "admin_only": true
+      },
+      {
+        "text": "Отредактировать цену на подписку",
+        "action": "edit_price",
+        "admin_only": true
+      },
+      {
+        "text": "Добавить администратора",
+        "action": "add_admin",
+        "admin_only": true
+      },
+      {
+        "text": "Удалить администратора",
+        "action": "del_admin",
+        "admin_only": true
+      },
+      {
+        "text": "Назад в меню",
+        "action": "menu"
+      }
+    ]
+
+  }
+}
