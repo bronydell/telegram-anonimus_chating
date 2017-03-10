@@ -1,6 +1,9 @@
 import logging
 
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, Job
+from telegram.error import (TelegramError, Unauthorized, BadRequest,
+                            TimedOut, ChatMigrated, NetworkError)
+
 
 import answers
 import saver
@@ -10,6 +13,9 @@ from database import admin_db
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                   level=logging.DEBUG)
 
+
+def error_callback(bot, update, error):
+    print(error)
 
 with open('key.config', 'r', encoding='utf-8') as myfile:
     key = myfile.read().replace('\n', '')
@@ -25,6 +31,7 @@ if len(admin_db.getAllAdmins()) <= 0:
 j = updater.job_queue
 job_minute = Job(super_actions.controlSubs, 60*60*24)
 j.put(job_minute, next_t=0.0)
+updater.dispatcher.add_error_handler(error_callback)
 updater.dispatcher.add_handler(MessageHandler(Filters.document | Filters.text | Filters.photo | Filters.audio
                                               | Filters.sticker | Filters.voice | Filters.video,
                                               answers.answer))
