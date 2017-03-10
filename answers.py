@@ -77,8 +77,8 @@ def answer(bot, update):
                 return None
 
     if act == 'chat':
-        if settings['message_every_min'] > 0 and not udb.getLastMsg(uid, 0) is None:
-            if udb.getLastMsg(uid, 0) > 0 and time.time() - udb.getLastMsg(uid, 0) < settings['message_every_min'] * 60:
+        if settings['message_every_sec'] > 0 and not udb.getLastMsg(uid, 0) is None:
+            if udb.getLastMsg(uid, 0) > 0 and time.time() - udb.getLastMsg(uid, 0) < settings['message_every_sec']:
                 bot.sendMessage(uid, text=settings['system_messages']['timeout'])
                 return None
         super_actions.sendmsg(bot, update, rooms.getRoomID(uid))

@@ -83,6 +83,10 @@ def sendMessage(bot, update, user, text=None):
 
         except telegram.TelegramError as ex:
             bot.sendMessage(update.message.from_user.id, text='Произошла ошибка: ' + str(ex.message))
+
+        except telegram.Unauthorized as unauth:
+            chatdb.kickUser(user)
+            menu(bot, update, user)
     else:
         bot.sendMessage(chat_id=user, text=text)
 
