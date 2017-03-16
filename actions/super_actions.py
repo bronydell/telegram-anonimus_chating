@@ -7,6 +7,8 @@ import numpy as np
 import telegram
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
 
+from telegram.error import (TelegramError, Unauthorized, BadRequest,
+                            TimedOut, ChatMigrated, NetworkError)
 import database.chat_db as chatdb
 import database.rooms_db as roomdb
 import database.subscription_db as sudb
@@ -22,6 +24,9 @@ def is_json(myjson):
     return False
   return True
 
+def kickUser(bot, update, id):
+    saver.kickUserFromChat(id)
+    menu(bot, update, id)
 
 def sendmsg(bot, update, room_id, text=None):
     settings = getBotSettings()
@@ -81,12 +86,9 @@ def sendMessage(bot, update, user, text=None):
                     bot.sendVideo(chat_id=user, video=message.video.file_id, caption=
                     settings['templates']['video_message'].format(udb.getFakeUserName(uid)))
 
-        except telegram.TelegramError as ex:
-            bot.sendMessage(update.message.from_user.id, text='Произошла ошибка: ' + str(ex.message))
+        except Unauthorized as ex:
+            kickUser(bot, update, user)
 
-        except telegram.Unauthorized as unauth:
-            chatdb.kickUser(user)
-            menu(bot, update, user)
     else:
         bot.sendMessage(chat_id=user, text=text)
 

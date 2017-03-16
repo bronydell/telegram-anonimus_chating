@@ -11,11 +11,12 @@ from actions import super_actions
 from database import admin_db
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                  level=logging.INFO)
+                  level=logging.DEBUG)
 
 
 def error_callback(bot, update, error):
-    print(error)
+
+    print(bot.token)
 
 with open('key.config', 'r', encoding='utf-8') as myfile:
     key = myfile.read().replace('\n', '')

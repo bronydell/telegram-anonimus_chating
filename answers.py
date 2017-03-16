@@ -68,7 +68,6 @@ def answer(bot, update):
     settings = super_actions.getBotSettings()
     uid = update.message.from_user.id
     act = udb.getUserAction(update.message.from_user.id, settings['default_menu'])
-    print(act)
     udb.setUserUsername(uid, update.message.from_user.username)
     if act in settings:
         for option in settings[act]['keyboard']:
