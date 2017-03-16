@@ -11,7 +11,7 @@ from actions import super_actions
 from database import admin_db
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                  level=logging.DEBUG)
+                  level=logging.INFO)
 
 
 def error_callback(bot, update, error):
