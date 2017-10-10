@@ -108,9 +108,9 @@ def isMuted(id):
     conn = sqlite3.connect(filename + '.db')
     c = conn.cursor()
     c.execute(get_muted, [id])
-    muted = c.fetchone()[0]
+    muted = c.fetchone()
     if muted:
-        return muted
+        return muted[0]
     else:
         return 0
 
@@ -151,23 +151,23 @@ def getUserAction(id, default):
     conn = sqlite3.connect(filename + '.db')
     c = conn.cursor()
     c.execute(get_action, [id])
-    data = c.fetchone()[0]
+    data = c.fetchone()
     conn.commit()
     conn.close()
     if data:
-        return data
+        return data[0]
     return default
 
 
-def getFakeUserName(id):
+def getFakeUserName(uid):
     conn = sqlite3.connect(filename + '.db')
     c = conn.cursor()
-    c.execute(get_fakeusername, [id])
-    data = c.fetchone()[0]
+    c.execute(get_fakeusername, [uid])
+    data = c.fetchone()
     conn.commit()
     conn.close()
-    if data:
-        return data
+    if data and data[0]:
+        return data[0]
     return 'Anonymous'
 
 def setUserAction(id, action):

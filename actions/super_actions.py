@@ -7,7 +7,7 @@ import numpy as np
 import telegram
 from telegram import InlineKeyboardMarkup, InlineKeyboardButton
 
-from telegram.error import (TelegramError, Unauthorized, BadRequest,
+from telegram.error import (TelegramError, Unauthorized, RetryAfter,
                             TimedOut, ChatMigrated, NetworkError)
 import database.chat_db as chatdb
 import database.rooms_db as roomdb
@@ -28,11 +28,15 @@ def kickUser(bot, update, id):
     saver.kickUserFromChat(id)
     menu(bot, update, id)
 
+
 def sendmsg(bot, update, room_id, text=None):
-    settings = getBotSettings()
-    for user in saver.getUsersToReply(room_id):
-        if settings['duble_msgs'] or not user == update.message.from_user.id:
-            sendMessage(bot, update, user, text)
+    try:
+        settings = getBotSettings()
+        for user in saver.getUsersToReply(room_id):
+            if settings['duble_msgs'] or not user == update.message.from_user.id:
+                sendMessage(bot, update, user, text)
+    except:
+        pass
 
 
 def sendMessage(bot, update, user, text=None):
@@ -86,8 +90,12 @@ def sendMessage(bot, update, user, text=None):
                     bot.sendVideo(chat_id=user, video=message.video.file_id, caption=
                     settings['templates']['video_message'].format(udb.getFakeUserName(uid)))
 
-        except Unauthorized as ex:
+        except Unauthorized:
             kickUser(bot, update, user)
+        except RetryAfter as ex:
+            time.sleep(ex.retry_after)
+            sendMessage(bot, update, user, text)
+
 
     else:
         bot.sendMessage(chat_id=user, text=text)
@@ -171,7 +179,6 @@ def menu(bot, update, id = -1):
     uid = update.message.from_user.id
     if not id == -1:
         uid = id
-
     if len(chatdb.getAllChaters(chatdb.getRoom(uid))) <= 1:
         roomdb.removeRoom(chatdb.getRoom(uid))
     else:
@@ -180,7 +187,6 @@ def menu(bot, update, id = -1):
     saver.kickUserFromChat(uid)
     act = 'menu'
     udb.setUserAction(uid, settings['default_menu'])
-    udb.setUserUsername(uid, update.message.from_user.username)
     bot.sendMessage(uid, text=settings[act]['message'],
                     reply_markup=telegram.ReplyKeyboardMarkup(keyboard=getKeyboard(act, uid)))
 

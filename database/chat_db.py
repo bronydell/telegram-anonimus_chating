@@ -66,7 +66,7 @@ def kickUser(id):
 def muteUser(id):
     conn = sqlite3.connect(filename + '.db')
     c = conn.cursor()
-    c.execute("update " + chat_table_name + " SET id = ? WHERE id = ?;", [id])
+    c.execute("update " + chat_table_name + " SET id = ? WHERE id = ?;", [id, id])
     conn.commit()
     conn.close()
 

@@ -11,7 +11,8 @@ def sendtoAll(bot, update, txt):
             try:
                 bot.sendMessage(user, text=txt)
             except telegram.TelegramError as ex:
-                bot.sendMessage(update.message.from_user.id, text='Произошла ошибка: '+str(ex.message))
+
+                pass
     else:
         bot.sendMessage(update.message.chat_id, text=settings['system_messages']['not_admin'])
 
